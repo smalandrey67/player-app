@@ -1,0 +1,42 @@
+.header{
+    min-height: 60px; 
+    padding: 10px 0;
+    &__body{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__title{
+        font-size: 29px;
+        font-weight: 700;
+    }
+    &__subtitle{
+        font-size: 20px;
+        font-weight: 700;
+        margin-right: 10px;
+        transition: all 0.5s ease;
+        &:active{
+            color: var(--color-grey);
+        }
+    }
+    &__functionality{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 1050px){
+   .header__button{
+       position: relative;
+       z-index: 50;
+   }
+}
+
+@media(min-width: 768px){
+    .header__subtitle{
+        &:hover{
+            color: var(--color-grey);
+        }
+    }
+}

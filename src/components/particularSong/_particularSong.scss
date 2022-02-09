@@ -1,0 +1,88 @@
+.song{
+    transition: all 0.5s ease;
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding-right: 8px;
+    position: relative;
+    &--active{
+        background-color: var(--color-timber-green);
+    }
+    &__container{
+        display: flex;
+        align-items: center;
+    }
+    &__favorite{
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__image{
+        width: 100%;
+        max-width: 110px;
+    }
+    &__information{
+        padding-left: 10px;
+    }
+    &__item{
+        &-name{
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--color-iron);
+        }
+        &-author{
+            font-weight: 600;
+            color: var(--color-grey);
+        }
+    }
+    &__favorites{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        transition: all 0.5s ease;
+        &:active{
+            transform: scale(0.8);
+        }
+    }
+
+    &__new{
+        position: absolute;
+        background: var(--color-orange);
+        height: 20px;
+        width: 47px;
+        bottom: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0px;
+            left: -10%;
+            top: 100%;
+            z-index: 10;
+            display: block;
+            height: 10px;
+            background-size: 6px 100%;
+            background-image: linear-gradient(135deg,  var(--color-orange) 25%, transparent 25%), linear-gradient(225deg,  var(--color-orange) 25%, transparent 25%);
+            background-position: 0px 0;
+        }
+        &-text{
+            padding: 3px 0 0 3px;
+            font-weight: 600; 
+            color: grey;
+        }
+    }
+    &__skipper{
+        margin-right: 7px;
+    }
+}
+
+@media(min-width: 768px){
+    .song:hover{
+        background-color: var(--color-timber-green);
+    }
+    .song__favorites{
+        &:hover{
+            transform: scale(0);
+        }
+    }
+}

@@ -1,0 +1,132 @@
+.player{
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+    }
+    &__body{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex: 0 1 550px;
+        transition: all 1s ease;
+    }
+    &__controller{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+    &--smaller{
+        transform: translateX(40%);
+    }
+}
+
+.song{
+    &__figure{
+        margin-bottom: 10px;
+        text-align: center;
+        &-name{
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-iron);
+        }
+        &-author{
+            color: var(--color-grey);
+        }
+    }
+    &__avatar{
+        max-width: 350px;
+        margin-bottom: 10px;
+        position: relative;
+        &-image{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 10;
+        }
+        &-rock{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+            z-index: 9;
+            border-radius: 50%;
+            transition: all 1s ease;
+            &_active{
+                transform: translateX(-38%) rotate(180deg);
+            }
+
+        }
+    }
+
+    &__functionality{
+        display: flex;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    &__skipper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+        &-time{ 
+            flex: 0 0 8%;
+            text-align: center;
+        }
+    }
+    &__track{
+        width: 80%;
+        height: 5px;
+        background-color: var(--color-black);
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        &-range{
+            width: 100%;
+            -webkit-appearance: none;
+            cursor: pointer;
+            border-radius: 10px;
+            background: transparent;
+        }
+        &-animate{
+            background-color: var(--color-grey);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(0%);
+            pointer-events: none;
+        }
+    }
+}
+
+input[type="range"]:focus{
+    outline: none;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+}
+
+
+@media(max-width: 1050px){
+    .player--smaller{
+        transform: translateX(0);
+    }
+}
+
+@media(max-width: 430px){
+    .song__track{
+        width: 75%;
+    }
+}
+

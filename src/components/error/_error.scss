@@ -1,0 +1,14 @@
+.error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 30vh;
+    &__container{
+        text-align: center;
+    }
+    &__title{
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
