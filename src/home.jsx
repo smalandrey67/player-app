@@ -8,9 +8,9 @@ import { getSongs } from './api/api'
 import './home.scss'
 
 //components
-import { Header } from './components'
-import { Footer } from './components'
-import { Main } from './components'
+import { Header } from './components/header/header'
+import { Main } from './components/main/main'
+import { Footer } from './components/footer/footer'
 
 //hoc
 import { CatchError } from './hoc/catchError'
@@ -29,7 +29,7 @@ const Home = () => {
 
     return(
         <CatchError>
-            <Header setLibraryIsOpen={setLibraryIsOpen}/>
+            <Header setLibraryIsOpen={setLibraryIsOpen} />
             <Main 
                 songs={songs} 
                 setSongs={setSongs}

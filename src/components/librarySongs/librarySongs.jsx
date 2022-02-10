@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 
 //components
 import { ParticularSong } from '../particularSong/particularSong'
 import { SortButton } from '../sortButton/sortButton'
+import { Spinner, spinner } from '../spinner/spinner'
 
 //styles
 import './_librarySongs.scss'
@@ -11,20 +12,21 @@ import './_librarySongs.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-//utils
-import { sortingSongs } from '../../utils'
-
 //assets
 import { ReactComponent as ImageSort } from '../../assets/arrow-up-a-z-solid.svg'
 import { ReactComponent as NotFound } from '../../assets/not-found.svg'
 
-const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
-    const [term, setTerm] = useState('')
-    const [searchPanel, setSearchPanel] = useState(false)
-    const [sortPanel, setSortPanel] = useState(false)
-    const [sorting, setSorting] = useState({all: false, favorites: false, new: false})
+//librarySongs-logic
+import { SearchPanelLogic } from './librarySongsLogic/searchPanelLogic'
+import { SortPanelLogic } from './librarySongsLogic/sortPanelLogic'
+import { SearchTermLogic } from './librarySongsLogic/searchTermLogic'
+import { SortingObjectLogic } from './librarySongsLogic/sortingObjectLogic'
 
-    const searchPanelRef = useRef()
+const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
+    const { searchPanel, panelHandler, setSearchPanel, searchPanelRef } = SearchPanelLogic()
+    const { sortPanel, sortHandler } = SortPanelLogic()
+    const { term, setTerm, handlerTermChange} = SearchTermLogic()
+    const { sorting, sortingHandler } = SortingObjectLogic()
 
     useEffect(() => {
         if(!libraryIsOpen || !searchPanel){
@@ -32,15 +34,6 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
             setSearchPanel(false)
         }
     }, [libraryIsOpen, searchPanel])
-
-    if(searchPanel){
-        searchPanelRef.current.focus()
-    }
-
-    const sortingHandler = (type) => {
-        const newSortingObject = sortingSongs(type, sorting)
-        setSorting(newSortingObject)
-    }
 
     const searchSong = () => {
         if(term.length > 0){
@@ -57,7 +50,6 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
     }
     const visibleItems = searchSong()
 
-    
     return(
         <aside className={`library ${libraryIsOpen ? 'library--active' : ''}`}>
              <div className="library__search">
@@ -65,7 +57,7 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
                     <input 
                         className="library__left-input" 
                         type="text" 
-                        onChange={(e) => setTerm(e.target.value)}
+                        onChange={handlerTermChange}
                         placeholder='search a song'
                         ref={searchPanelRef} 
                         value={term} 
@@ -75,24 +67,23 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
                 <div className="library__right">
                     <FontAwesomeIcon 
                         icon={faSearch}
-                        size="2x"
-                        onClick={() => setSearchPanel(prev => !prev)}
-                        color={searchPanel ? 'var(--color-te-papa-green)' : 'var(--color-black)'}
-                        style={{marginRight: 10}}
+                        size="lg"
+                        onClick={panelHandler}
+                        color={searchPanel ? 'var(--color-te-papa-green)': 'var(--color-white)'}
+                        className="library__right-search"
                     />
                     <ImageSort 
-                        height="28"
-                        width="28" 
-                        onClick={() => setSortPanel(prev => !prev)}
-                        style={{fill: sortPanel ? 'var(--color-te-papa-green)' : 'var(--color-black)'}}
+                        height="18"
+                        width="18" 
+                        onClick={sortHandler}
+                        style={{fill: sortPanel ? 'var(--color-te-papa-green)' : 'var(--color-white)'}}
+                        className="library__right-sort"
                     />
                 </div>
             </div>
 
             <div className={`library__sorting ${sortPanel ? 'library__sorting-active' : ''}`}>
-                <SortButton sortingHandler={sortingHandler} title="all" type="SORT_ALL" />
-                <SortButton sortingHandler={sortingHandler} title="favorites" type="SORT_FAVORITES" />
-                <SortButton sortingHandler={sortingHandler} title="new" type="SORT_NEW" />
+                <SortButton sortingHandler={sortingHandler} />
             </div>
 
             <div className="library__container">
@@ -109,7 +100,7 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
 
                 {visibleItems.length > 0 || 
                     <div className="library__warning">
-                        <NotFound height="200" width="200"/>
+                        <NotFound className="library__warning-image" height="200" width="200" />
                         <p className="library__warning-text">No results of it</p>
                     </div>
                 }

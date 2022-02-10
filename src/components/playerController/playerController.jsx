@@ -10,7 +10,7 @@ const PlayerController = ({ currentSong, audioRef, skipBackSong, skipForwardSong
     const [isPlay, setIsPlay] = useState(false)
 
     useEffect(() => {
-        isPlay ? audioRef?.current.play() : audioRef?.current.pause()
+        isPlay ? audioRef.current.play() : audioRef.current.pause()
     }, [isPlay, audioRef, currentSong])
 
     

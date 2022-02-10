@@ -11,7 +11,7 @@
         font-weight: 700;
     }
     &__subtitle{
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 700;
         margin-right: 10px;
         transition: all 0.5s ease;
@@ -28,8 +28,8 @@
 
 @media(max-width: 1050px){
    .header__button{
-       position: relative;
-       z-index: 50;
+        position: relative;
+        z-index: 50;
    }
 }
 

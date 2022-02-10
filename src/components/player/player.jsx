@@ -1,5 +1,5 @@
 // depencies
-import { useRef, useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 // font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,7 +9,6 @@ import { faInfinity } from '@fortawesome/free-solid-svg-icons'
 import { PlayerController } from '../playerController/playerController'
 import { Spinner } from '../spinner/spinner'
 
-
 //styles
 import './_player.scss'
 
@@ -18,13 +17,22 @@ import { formatTime } from '../../utils'
 import { songFunctionality } from '../../utils'
 import { formatSongs } from '../../utils'
 
+//player-logic
+import { LoopLogic } from './playerLogic/loopLogic'
+import { BackgroundLogic } from './playerLogic/backgroundLogic'
+import { TimeDragLogic } from './playerLogic/timeDragLogic'
+
 
 const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs }) => {
-    const [loop, setLoop] = useState(false)
-    const [songDataTime, setSongDataTime] = useState({current: 0, duration: 0, animation: 0})
-    const [backgroundAvatar, setBackgroundAvatar] = useState(false)
+    const { loop, loopHandler } = LoopLogic()
+    const { backgroundPlate, showPlateHandler, hidePlateHandler } = BackgroundLogic()
+    const {
+        songDataTime, 
+        timeUpdateHandler, 
+        dragUpdateHandler, 
+        audioRef, 
+        animationStyleTransform } = TimeDragLogic()
 
-    const audioRef = useRef()
 
     const { image, name, audio, id, plate, author } = currentSong
     const { current, duration } = songDataTime
@@ -57,38 +65,6 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
         setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_BACK_INFINITY'))     
     }
 
-    //==========update-time-functionality==========//
-    const timeUpdate = (e) => {
-        const { currentTime, duration } = e.target
-
-        const animation = Math.round((Math.round(currentTime) / Math.round(duration)) * 100)
-
-        setSongDataTime({...songDataTime, current: currentTime, duration, animation,})
-    }
-
-    const dragHandler = (e) => {
-        audioRef.current.currentTime = e.target.value
-        
-        setSongDataTime({...songDataTime, current: e.target.value})
-    }
-
-
-    //==========background-avatar-functionality==========//
-    const showAvatarBackground = () => {
-        if(window.innerWidth > 768){
-            setBackgroundAvatar(prev => !prev)
-        }
-    }
-    const hideAvatarBackground = () => {
-        if(window.innerWidth > 768){
-            setBackgroundAvatar(prev => !prev)
-        }
-    }
-
-    const animationStyleTransform = {
-        transform: `translateX(${songDataTime.animation}%)`
-    }
-
     return(
         <section className={`player`}>
             <div className="player__container container">
@@ -100,11 +76,11 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
                                     className="song__avatar-image" 
                                     src={image} 
                                     alt={name} 
-                                    onMouseEnter={showAvatarBackground} 
-                                    onMouseLeave={hideAvatarBackground} 
+                                    onMouseEnter={showPlateHandler} 
+                                    onMouseLeave={hidePlateHandler} 
                                 />
                                 <img 
-                                    className={`song__avatar-rock ${backgroundAvatar ? 'song__avatar-rock_active' : ''}`}
+                                    className={`song__avatar-rock ${backgroundPlate ? 'song__avatar-rock_active' : ''}`}
                                     src={plate}
                                     alt={name} 
                                 />
@@ -124,8 +100,8 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
                                         max={duration || 0} 
                                         className="song__track-range" 
                                         type="range" 
-                                        name="song-range"
-                                        onChange={dragHandler}
+                                        name="range"
+                                        onChange={dragUpdateHandler}
                                         value={current}
                                     />
                                     <div style={animationStyleTransform} className="song__track-animate"></div>
@@ -136,7 +112,7 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
                             className="song__infinity-icon infinity-icon"
                             icon={faInfinity}
                             size="lg"
-                            onClick={() => setLoop(prev => !prev)}
+                            onClick={loopHandler}
                             color={loop ? 'var(--color-gable-green)' : 'var(--color-black)'}
                         />
                     </div>
@@ -153,8 +129,8 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
                         id="player-audio" 
                         src={audio}
                         onEnded={endAudio}
-                        onTimeUpdate={timeUpdate}
-                        onLoadedMetadata={timeUpdate}
+                        onTimeUpdate={timeUpdateHandler}
+                        onLoadedMetadata={timeUpdateHandler}
                     />
 
                 </div>

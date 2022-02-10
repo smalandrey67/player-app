@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 //api
 import { updateDocument } from '../../api/api'
 
@@ -15,11 +13,12 @@ import { formatSongs } from '../../utils'
 
 const ParticularSong = ({ songs, setCurrentSong, setSongs, song }) => {
 
-    const { image, name, author, favorites, id, recentlyAdded } = song
+    const { image, name, author, favorites, id, recentlyAdded, active } = song
 
     const selectSongHandler = () => {
         const newCurrentSong = songs.filter(item => item.id === id)
 
+        //get a new array with sorting objects with new fields new
         const activeCurrentSong = formatSongs(songs, id, 'FORMAT_ACTIVE_SONG')
        
         setCurrentSong(newCurrentSong[0])
@@ -29,6 +28,7 @@ const ParticularSong = ({ songs, setCurrentSong, setSongs, song }) => {
     const favoritesFunction = async (e) => {
         e.stopPropagation()
     
+        //get a new array with sorting objects with new fields favorites
         const activeFavoritesSongs = formatSongs(songs, id, 'FORMAT_ACTIVE_FAVORITES', favorites)
       
         setSongs(activeFavoritesSongs)
@@ -38,7 +38,7 @@ const ParticularSong = ({ songs, setCurrentSong, setSongs, song }) => {
     return(
         <article 
             onClick={selectSongHandler} 
-            className={`song ${song.active ? 'song--active' : '' }` } 
+            className={`song ${active ? 'song--active' : '' }` } 
         >
             <div className="song__container">
                 <img className="song__image" src={image} alt={name} />

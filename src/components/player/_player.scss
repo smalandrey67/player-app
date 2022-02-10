@@ -124,6 +124,12 @@ input[type="range"]::-webkit-slider-thumb{
     }
 }
 
+@media(max-width: 768px){
+    .player{
+        padding: 35px 0;
+    }
+}
+
 @media(max-width: 430px){
     .song__track{
         width: 75%;
