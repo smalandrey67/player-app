@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/player-app/static/css/main.e2a97db6.css",
-    "main.js": "/player-app/static/js/main.ac4eb7d4.js",
+    "main.css": "/player-app/static/css/main.f7a35a90.css",
+    "main.js": "/player-app/static/js/main.d8c64fde.js",
     "static/media/error-robot.svg": "/player-app/static/media/error-robot.d7083b6d733385e5826f6f05fd828bd0.svg",
     "static/media/not-found.svg": "/player-app/static/media/not-found.4a393984ff2fc649ac05a5066ed83a5c.svg",
     "static/media/arrow-up-a-z-solid.svg": "/player-app/static/media/arrow-up-a-z-solid.fcb1482258f851ff7efc04f7b0e58e5a.svg",
     "index.html": "/player-app/index.html",
-    "main.e2a97db6.css.map": "/player-app/static/css/main.e2a97db6.css.map",
-    "main.ac4eb7d4.js.map": "/player-app/static/js/main.ac4eb7d4.js.map"
+    "main.f7a35a90.css.map": "/player-app/static/css/main.f7a35a90.css.map",
+    "main.d8c64fde.js.map": "/player-app/static/js/main.d8c64fde.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2a97db6.css",
-    "static/js/main.ac4eb7d4.js"
+    "static/css/main.f7a35a90.css",
+    "static/js/main.d8c64fde.js"
   ]
 }
