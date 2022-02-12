@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-
 const SearchTermLogic = () => {
     const [term, setTerm] = useState('')
 

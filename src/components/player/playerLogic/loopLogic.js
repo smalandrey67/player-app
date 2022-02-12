@@ -5,7 +5,7 @@ const LoopLogic = () => {
     const [loop, setLoop] = useState(false)
 
     const loopHandler = () => {
-        setLoop(prev => !prev)
+        setLoop(prevLoopStatus => !prevLoopStatus)
     }
 
     return { loop, loopHandler }

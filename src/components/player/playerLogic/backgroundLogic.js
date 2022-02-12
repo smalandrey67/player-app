@@ -5,13 +5,13 @@ const BackgroundLogic = () => {
 
     const showPlateHandler = () => {
         if(window.innerWidth > 768){
-            setBackgroundPlate(prev => !prev)
+            setBackgroundPlate(prevBackgroundStatus => !prevBackgroundStatus)
         }
     }   
 
     const hidePlateHandler = () => {
         if(window.innerWidth > 768){
-            setBackgroundPlate(prev => !prev)
+            setBackgroundPlate(prevBackgroundStatus => !prevBackgroundStatus)
         }
     }
 

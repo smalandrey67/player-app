@@ -2,7 +2,6 @@
 import { updateDoc, doc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../firebase'
 
-
 const userCollectionRef = collection(db, 'songs')
 
 //get-songs-from-firebase

@@ -9,7 +9,8 @@ import './home.scss'
 
 //components
 import { Header } from './components/header/header'
-import { Main } from './components/main/main'
+import { Player } from './components/player/player'
+import { LibrarySongs } from './components/librarySongs/librarySongs'
 import { Footer } from './components/footer/footer'
 
 //hoc
@@ -30,14 +31,22 @@ const Home = () => {
     return(
         <CatchError>
             <Header setLibraryIsOpen={setLibraryIsOpen} />
-            <Main 
-                songs={songs} 
-                setSongs={setSongs}
-                currentSong={currentSong} 
-                setCurrentSong={setCurrentSong}
-                libraryIsOpen={libraryIsOpen}
-            />
-            {/* <Footer /> */}
+            <main className="main">
+                <Player 
+                    currentSong={currentSong} 
+                    libraryIsOpen={libraryIsOpen} 
+                    setCurrentSong={setCurrentSong}
+                    songs={songs}
+                    setSongs={setSongs}
+                />
+                <LibrarySongs 
+                    songs={songs} 
+                    setCurrentSong={setCurrentSong} 
+                    setSongs={setSongs}
+                    libraryIsOpen={libraryIsOpen}
+                />
+            </main>
+            <Footer />
         </CatchError> 
     )
 }

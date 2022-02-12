@@ -13,6 +13,7 @@ const PlayerController = ({ currentSong, audioRef, skipBackSong, skipForwardSong
         isPlay ? audioRef.current.play() : audioRef.current.pause()
     }, [isPlay, audioRef, currentSong])
 
+    const playHandler = () => setIsPlay(prevStatusPlay => !prevStatusPlay)
     
     return(
         <div className="player__controller">
@@ -24,8 +25,8 @@ const PlayerController = ({ currentSong, audioRef, skipBackSong, skipForwardSong
             />
             <FontAwesomeIcon 
                 className="player__controller-icon play-icon" 
-                icon={isPlay ? faPause: faPlay }
-                onClick={() => setIsPlay(prev => !prev)}
+                icon={isPlay ? faPause: faPlay}
+                onClick={playHandler}
                 size="2x"
             />
             <FontAwesomeIcon 

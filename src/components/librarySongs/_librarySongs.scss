@@ -45,13 +45,6 @@
             opacity: 1;
         }
     }
-    &__right{
-        display: flex;
-        align-items: center;
-        &-search{
-            margin-right: 10px;
-        }
-    }
 
     &__sorting{
         display: flex;
@@ -70,18 +63,8 @@
     }
     &__container{
         overflow: auto;
-        height: 92%;
+        height: 91%;
     }
-    &__warning{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        &-text{
-            font-size: 18px;
-            font-weight: 500;
-        }
-    }  
 }
 
 *{
@@ -103,6 +86,7 @@
 
 @media(max-width: 1050px){
    .library{
+       transition: all 0.6s ease;
        width: 100%;
        &__right{
            padding-right: 40px;

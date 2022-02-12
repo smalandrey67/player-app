@@ -43,6 +43,15 @@ body{
     --color-iron: #E4E5E6;
 }
 
+.wrapper{
+    min-height: 100%;
+    display: flex; 
+    flex-direction: column;
+}
+.main{
+    flex: 1 1 auto;
+}
+
 
 
 

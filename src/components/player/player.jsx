@@ -1,5 +1,5 @@
 // depencies
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,6 +7,7 @@ import { faInfinity } from '@fortawesome/free-solid-svg-icons'
 
 //components
 import { PlayerController } from '../playerController/playerController'
+import { SongAvatarPlate } from '../songAvatarPlate/songAvatarPlate'
 import { Spinner } from '../spinner/spinner'
 
 //styles
@@ -24,8 +25,11 @@ import { TimeDragLogic } from './playerLogic/timeDragLogic'
 
 
 const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs }) => {
+    const [currentIndexOfSong, setCurrentIndexOfSong] = useState(0) //MADE CHANGE OVER HERE
+
     const { loop, loopHandler } = LoopLogic()
     const { backgroundPlate, showPlateHandler, hidePlateHandler } = BackgroundLogic()
+
     const {
         songDataTime, 
         timeUpdateHandler, 
@@ -33,18 +37,21 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
         audioRef, 
         animationStyleTransform } = TimeDragLogic()
 
-
     const { image, name, audio, id, plate, author } = currentSong
     const { current, duration } = songDataTime
 
     useEffect(() => {
-        const activeCurrentSong = formatSongs(songs, id, 'FORMAT_ACTIVE_SONG')
+        const indexOfCurrentSong = songs.findIndex(item => item.id === id)
+        const activeCurrentSongs = formatSongs(songs, id, 'FORMAT_ACTIVE_SONG')
         
-        setSongs(activeCurrentSong) 
+
+        setCurrentIndexOfSong(indexOfCurrentSong) // MADE CHANGE OVER HERE
+        setSongs(activeCurrentSongs) 
     }, [currentSong, id])
 
-    //get-current-index-of-song
-    const currentIndexOfSong = songs.findIndex(item => item.id === id)
+
+    //get-current-index-of-song // I DELETED THAT 
+    // const currentIndexOfSong = songs.findIndex(item => item.id === id)
 
     const endAudio = () => {
         if(loop){
@@ -53,6 +60,7 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
             setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_FORWARD'))
         }
     }
+
 
     //==========skip-functionality==========//
     const skipForwardSong = () => setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_FORWARD'))
@@ -66,31 +74,22 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
     }
 
     return(
-        <section className={`player`}>
+        <section className="player">
             <div className="player__container container">
                 <div className={`player__body ${libraryIsOpen ? 'player--smaller': ''}`}>
+
                     {!Object.values(currentSong).length ? <Spinner /> : 
-                        <figure className="song__figure">
-                            <div className="song__avatar">
-                                <img 
-                                    className="song__avatar-image" 
-                                    src={image} 
-                                    alt={name} 
-                                    onMouseEnter={showPlateHandler} 
-                                    onMouseLeave={hidePlateHandler} 
-                                />
-                                <img 
-                                    className={`song__avatar-rock ${backgroundPlate ? 'song__avatar-rock_active' : ''}`}
-                                    src={plate}
-                                    alt={name} 
-                                />
-                            </div>
-                            <figcaption className="song__figure">
-                                <h3 className="song__figure-name">{name}</h3>
-                                <p className="song__figure-author">{author}</p>
-                            </figcaption>
-                        </figure> 
+                        <SongAvatarPlate 
+                            image={image} 
+                            name={name} 
+                            showPlateHandler={showPlateHandler} 
+                            hidePlateHandler={hidePlateHandler}
+                            backgroundPlate={backgroundPlate}
+                            plate={plate}
+                            author={author}
+                        />
                     }
+
                     <div className="song__functionality">
                         <div className="song__skipper">
                             <p className="song__skipper-time song__skipper-start">{formatTime(current || 0)}</p>
@@ -100,7 +99,7 @@ const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs })
                                         max={duration || 0} 
                                         className="song__track-range" 
                                         type="range" 
-                                        name="range"
+                                        name="rangeSong"
                                         onChange={dragUpdateHandler}
                                         value={current}
                                     />
