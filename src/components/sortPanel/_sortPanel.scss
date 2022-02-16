@@ -1,7 +1,20 @@
 .library__right{
     display: flex;
     align-items: center;
-    &-search{
+    flex-wrap: wrap;
+
+    &-functionality:not(:last-child){
         margin-right: 10px;
+    }
+    &-functionality{
+        cursor: pointer;
+    }
+
+    &-close{
+       fill: var(--color-white);
+       transition: all 0.5s ease;
+       &:hover{
+           fill: var(--color-te-papa-green);
+       }
     }
 }

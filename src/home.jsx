@@ -1,8 +1,5 @@
 // depencies
-import { useState, useEffect } from 'react'
-
-//api
-import { getSongs } from './api/api'
+import { useEffect } from 'react'
 
 //styles
 import './home.scss'
@@ -16,35 +13,22 @@ import { Footer } from './components/footer/footer'
 //hoc
 import { CatchError } from './hoc/catchError'
 
+import { songsAsync } from './redux/asyncActions/songsAsync'
+import { useDispatch } from 'react-redux'
+
 const Home = () => {
-    const [songs, setSongs] = useState([])
-    const [currentSong, setCurrentSong] = useState({})
-    const [libraryIsOpen, setLibraryIsOpen] = useState(false)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        getSongs().then(data => {
-            setSongs(data)
-            setCurrentSong(data[0])
-        })
+        dispatch(songsAsync())
     }, [])
 
     return(
         <CatchError>
-            <Header setLibraryIsOpen={setLibraryIsOpen} />
+            <Header/>
             <main className="main">
-                <Player 
-                    currentSong={currentSong} 
-                    libraryIsOpen={libraryIsOpen} 
-                    setCurrentSong={setCurrentSong}
-                    songs={songs}
-                    setSongs={setSongs}
-                />
-                <LibrarySongs 
-                    songs={songs} 
-                    setCurrentSong={setCurrentSong} 
-                    setSongs={setSongs}
-                    libraryIsOpen={libraryIsOpen}
-                />
+                <Player />
+                <LibrarySongs />
             </main>
             <Footer />
         </CatchError> 

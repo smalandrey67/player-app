@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 //components
 import { ParticularSong } from '../particularSong/particularSong'
 import { SortButton } from '../sortButton/sortButton'
-import { Spinner } from '../spinner/spinner'
 import { NoResult } from '../noResult/noResult'
 import { SortPanel } from '../sortPanel/sortPanel'
 
@@ -16,11 +15,18 @@ import { SortPanelLogic } from './librarySongsLogic/sortPanelLogic'
 import { SearchTermLogic } from './librarySongsLogic/searchTermLogic'
 import { SortingObjectLogic } from './librarySongsLogic/sortingObjectLogic'
 
-const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
+//test
+import { useSelector } from 'react-redux'
+
+const LibrarySongs = () => {
+    const songs = useSelector(state => state.songsReducer.songs)
+    const libraryIsOpen = useSelector(state => state.libraryIsOpenReducer.libraryIsOpen)
+
+    //logic-of-that-component
     const { searchPanel, panelHandler, setSearchPanel, searchPanelRef } = SearchPanelLogic()
     const { sortPanel, sortHandler } = SortPanelLogic()
     const { term, setTerm, handlerTermChange} = SearchTermLogic()
-    const { sorting, sortingHandler } = SortingObjectLogic()
+    const { sorting } = SortingObjectLogic()
 
     useEffect(() => {
         if(!libraryIsOpen || !searchPanel){
@@ -46,7 +52,7 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
     return(
         <aside className={`library ${libraryIsOpen ? 'library--active' : ''}`}>
              <div className="library__search">
-                 
+
                 <div className={`library__left ${searchPanel ? 'library__left-active' : ''} ` }>
                     <input 
                         className="library__left-input" 
@@ -70,7 +76,7 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
             </div>
 
             <div className={`library__sorting ${sortPanel ? 'library__sorting-active' : ''}`}>
-                <SortButton sortingHandler={sortingHandler} />
+                <SortButton />
             </div>
 
             <div className="library__container">
@@ -79,12 +85,8 @@ const LibrarySongs = ({ songs, setCurrentSong, setSongs, libraryIsOpen }) => {
                         <ParticularSong 
                             key={song.id}
                             song={song}
-                            songs={songs}
-                            setSongs={setSongs}
-                            setCurrentSong={setCurrentSong}
                         />
                 )}
-
                 {visibleItems.length > 0 || <NoResult />}
             </div>
         </aside>

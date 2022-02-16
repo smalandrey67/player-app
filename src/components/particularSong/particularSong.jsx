@@ -1,6 +1,3 @@
-//api
-import { updateDocument } from '../../api/api'
-
 //font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -8,31 +5,30 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 // styles
 import './_particularSong.scss'
 
-//utils
-import { formatSongs } from '../../utils'
+//test
+import { useDispatch, useSelector } from 'react-redux'
+import { putSongs, putCurrentSong } from '../../redux/actions/songsAction'
+import { updateFieldsAsync } from '../../redux/asyncActions/updateFieldsAsync'
+import { formatFavorites } from '../../redux/actions/songsAction'
 
-const ParticularSong = ({ songs, setCurrentSong, setSongs, song }) => {
+const ParticularSong = ({ song }) => {
+    const dispatch = useDispatch()
+    const songs = useSelector(state => state.songsReducer.songs)
 
     const { image, name, author, favorites, id, recentlyAdded, active } = song
 
     const selectSongHandler = () => {
         const newCurrentSong = songs.filter(item => item.id === id)
 
-        //get a new array with sorting objects with new fields new
-        const activeCurrentSong = formatSongs(songs, id, 'FORMAT_ACTIVE_SONG')
-       
-        setCurrentSong(newCurrentSong[0])
-        setSongs(activeCurrentSong) 
+        dispatch(putSongs(id))
+        dispatch(putCurrentSong(newCurrentSong[0]))
     }
 
     const favoritesFunction = async (e) => {
         e.stopPropagation()
     
-        //get a new array with sorting objects with new fields favorites
-        const activeFavoritesSongs = formatSongs(songs, id, 'FORMAT_ACTIVE_FAVORITES', favorites)
-      
-        setSongs(activeFavoritesSongs)
-        await updateDocument(id, favorites)
+        dispatch(formatFavorites(id))
+        dispatch(updateFieldsAsync(id, favorites))
     }
 
     return(

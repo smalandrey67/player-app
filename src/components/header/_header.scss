@@ -26,13 +26,6 @@
     }
 }
 
-@media(max-width: 1050px){
-   .header__button{
-        position: relative;
-        z-index: 50;
-   }
-}
-
 @media(min-width: 768px){
     .header__subtitle{
         &:hover{

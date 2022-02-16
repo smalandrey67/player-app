@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
+import { collection } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5ZUgGEsuJEvcZQ1dVA9Xa-8K_V5svDMM",
@@ -11,6 +12,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+
+const db = getFirestore(app);
+const userCollectionRef = collection(db, 'songs')
+
+export { userCollectionRef, db }
 
 

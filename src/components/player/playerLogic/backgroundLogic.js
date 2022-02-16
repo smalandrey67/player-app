@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
  
 const BackgroundLogic = () => {
     const [backgroundPlate, setBackgroundPlate] = useState(false)
-
+   
     const showPlateHandler = () => {
         if(window.innerWidth > 768){
             setBackgroundPlate(prevBackgroundStatus => !prevBackgroundStatus)

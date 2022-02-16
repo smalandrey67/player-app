@@ -5,10 +5,20 @@ import './_header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 
+
+//redux
+import { useDispatch } from 'react-redux'
+import { libraryIsOpenAction } from '../../redux/actions/libraryIsOpenAction'
+
 const Header = ({ setLibraryIsOpen }) => {
 
-    //change-status-library
-    const libraryHandler = () => setLibraryIsOpen(prev => !prev)
+    const dispatch = useDispatch()
+
+    const libraryHandler = () => {
+        dispatch(libraryIsOpenAction())
+    }
+
+    // const libraryHandler = () => setLibraryIsOpen(prev => !prev)
 
     return(
         <header className="header">

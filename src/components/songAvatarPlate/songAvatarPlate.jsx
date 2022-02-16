@@ -8,7 +8,6 @@ const SongAvatarPlate = ({
     author,
 }) => {
 
-
     return(
         <figure className="song__figure">
             <div className="song__avatar">

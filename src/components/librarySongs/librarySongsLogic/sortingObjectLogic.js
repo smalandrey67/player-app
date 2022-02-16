@@ -1,17 +1,9 @@
-import { useState } from 'react'
-
-//utils
-import { sortingSongs } from '../../../utils/sortingSongs'
+//test
+import { useSelector } from 'react-redux'
 
 const SortingObjectLogic = () => {
-    const [sorting, setSorting] = useState({all: false, favorites: false, new: false})
-
-    const sortingHandler = (type) => {
-        const newSortingObject = sortingSongs(type, sorting)
-        setSorting(newSortingObject)
-    }
-
-    return { sorting, sortingHandler }
+    const sorting = useSelector(state => state.sortingReducer.sorting)
+   
+    return { sorting }
 }
-
 export { SortingObjectLogic }

@@ -15,62 +15,49 @@ import './_player.scss'
 
 //utils
 import { formatTime } from '../../utils'
-import { songFunctionality } from '../../utils'
-import { formatSongs } from '../../utils'
 
 //player-logic
 import { LoopLogic } from './playerLogic/loopLogic'
 import { BackgroundLogic } from './playerLogic/backgroundLogic'
 import { TimeDragLogic } from './playerLogic/timeDragLogic'
+import { SkipLogic } from './playerLogic/skipLogic'
 
 
-const Player = ({ songs, currentSong, libraryIsOpen, setCurrentSong, setSongs }) => {
-    const [currentIndexOfSong, setCurrentIndexOfSong] = useState(0) //MADE CHANGE OVER HERE
+//react-redux
+import { useSelector, useDispatch } from 'react-redux'
+import { putSongs, putCurrentSong } from '../../redux/actions/songsAction'
 
+
+const Player = () => {
+    const dispatch = useDispatch()
+
+    const songs = useSelector(state => state.songsReducer.songs)
+    const currentSong = useSelector(state => state.songsReducer.currentSong)
+    const libraryIsOpen = useSelector(state => state.libraryIsOpenReducer.libraryIsOpen)
+
+    //logic-of-that-component
     const { loop, loopHandler } = LoopLogic()
     const { backgroundPlate, showPlateHandler, hidePlateHandler } = BackgroundLogic()
-
-    const {
-        songDataTime, 
-        timeUpdateHandler, 
-        dragUpdateHandler, 
-        audioRef, 
-        animationStyleTransform } = TimeDragLogic()
+    const { skipForwardSong, skipBackSong, setCurrentIndexOfSong, SKIP_FORWARD_INDEX } = SkipLogic()
+    const { songDataTime, timeUpdateHandler, dragUpdateHandler, audioRef, animationStyleTransform } = TimeDragLogic()
 
     const { image, name, audio, id, plate, author } = currentSong
     const { current, duration } = songDataTime
 
     useEffect(() => {
         const indexOfCurrentSong = songs.findIndex(item => item.id === id)
-        const activeCurrentSongs = formatSongs(songs, id, 'FORMAT_ACTIVE_SONG')
         
-
-        setCurrentIndexOfSong(indexOfCurrentSong) // MADE CHANGE OVER HERE
-        setSongs(activeCurrentSongs) 
+        setCurrentIndexOfSong(indexOfCurrentSong)
+        dispatch(putSongs(id))
     }, [currentSong, id])
 
-
-    //get-current-index-of-song // I DELETED THAT 
-    // const currentIndexOfSong = songs.findIndex(item => item.id === id)
 
     const endAudio = () => {
         if(loop){
             audioRef.current.play()
-        }else{
-            setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_FORWARD'))
-        }
-    }
-
-
-    //==========skip-functionality==========//
-    const skipForwardSong = () => setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_FORWARD'))
-
-    const skipBackSong = () => {
-        if((currentIndexOfSong - 1) % songs.length === -1){
-            setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_BACK'))
             return
         }
-        setCurrentSong(songFunctionality(songs, currentIndexOfSong, 'SKIP_BACK_INFINITY'))     
+        dispatch(putCurrentSong(songs[SKIP_FORWARD_INDEX]))   
     }
 
     return(

@@ -1,0 +1,1 @@
+export const OPEN_LIBRARY = 'OPEN_LIBRARY'

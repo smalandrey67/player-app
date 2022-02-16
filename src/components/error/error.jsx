@@ -1,10 +1,14 @@
+//depencies
+import PropTypes from 'prop-types'
+
+
 //style
 import './_error.scss'
 
 //assets
 import { ReactComponent as ErrorRobot } from '../../assets/error-robot.svg'
 
-const Error = ({ titleError }) => {
+function Error({ titleError }){
     return(
         <div className="error">
             <div className="error__container container">
@@ -13,6 +17,10 @@ const Error = ({ titleError }) => {
             </div>
         </div>
     )
+}
+
+Error.propTypes = {
+    titleError: PropTypes.string,
 }
 
 export { Error }

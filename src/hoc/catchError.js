@@ -15,16 +15,14 @@ class CatchError extends Component{
     componentDidCatch(error){
         this.setState({ isError: true })
         
-        console.log(error)
+        console.error(error)
     }
 
     render(){
         const { isError } = this.state
-
-        if(isError){
-            return <Error titleError="sorry something went wrong" />
-        }
-
+       
+        if(isError) return <Error titleError="sorry something went wrong" /> 
+          
         return this.props.children
     }
 }

@@ -41,7 +41,7 @@
             }
         }
         &-active{
-            flex: 0 1 300px;
+            flex: 0 1 260px;
             opacity: 1;
         }
     }
@@ -88,8 +88,11 @@
    .library{
        transition: all 0.6s ease;
        width: 100%;
-       &__right{
-           padding-right: 40px;
-       }
    }
+}
+
+@media(max-width: 350px){
+    .library__left-active{
+        flex: 0 1 230px;
+    }
 }
