@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/player-app/static/css/main.9c8c386d.css",
-    "main.js": "/player-app/static/js/main.b5b366f9.js",
+    "main.css": "/player-app/static/css/main.42e31529.css",
+    "main.js": "/player-app/static/js/main.32ee455e.js",
     "static/media/error-robot.svg": "/player-app/static/media/error-robot.d7083b6d733385e5826f6f05fd828bd0.svg",
     "static/media/not-found.svg": "/player-app/static/media/not-found.4a393984ff2fc649ac05a5066ed83a5c.svg",
     "static/media/cross-close.svg": "/player-app/static/media/cross-close.da9c1a8120fddf6a4a6d9e2bdd97f7eb.svg",
     "static/media/arrow-up-a-z-solid.svg": "/player-app/static/media/arrow-up-a-z-solid.fcb1482258f851ff7efc04f7b0e58e5a.svg",
     "static/media/arrow-down.svg": "/player-app/static/media/arrow-down.600ee40a8482d49a28d3a8b68a87282b.svg",
     "index.html": "/player-app/index.html",
-    "main.9c8c386d.css.map": "/player-app/static/css/main.9c8c386d.css.map",
-    "main.b5b366f9.js.map": "/player-app/static/js/main.b5b366f9.js.map"
+    "main.42e31529.css.map": "/player-app/static/css/main.42e31529.css.map",
+    "main.32ee455e.js.map": "/player-app/static/js/main.32ee455e.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c8c386d.css",
-    "static/js/main.b5b366f9.js"
+    "static/css/main.42e31529.css",
+    "static/js/main.32ee455e.js"
   ]
 }
