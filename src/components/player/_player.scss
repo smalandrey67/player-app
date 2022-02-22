@@ -11,15 +11,19 @@
         flex-direction: column;
         flex: 0 1 550px;
         transition: all 1s ease;
+        &--smaller{
+            transform: translateX(40%);
+        }
+        &--top{
+            transform: translateY(-10%);
+        }
     }
+
     &__controller{
         display: flex;
         align-items: center;
         justify-content: space-around;
         width: 100%;
-    }
-    &--smaller{
-        transform: translateX(40%);
     }
 }
 
@@ -148,11 +152,27 @@ input[type="range"]::-ms-thumb {
     .song__avatar-rock{
         display: none;
     }
+    .player__body{
+        &--smaller{
+            transform: translateX(0%);
+        }
+    }
 }
 
 @media(max-width: 430px){
     .song__track{
         width: 75%;
     }
+    .song__avatar-image__active{
+        width: 45%;
+    }
+    .song__functionality-active{
+        margin-bottom: 10px;
+    }
+    .player__body--top{
+        transform: translateY(-45%);
+    }
 }
+
+
 

@@ -5,31 +5,16 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 // styles
 import './_particularSong.scss'
 
-//test
-import { useDispatch, useSelector } from 'react-redux'
-import { putSongs, putCurrentSong } from '../../redux/actions/songsAction'
-import { updateFieldsAsync } from '../../redux/asyncActions/updateFieldsAsync'
-import { formatFavorites } from '../../redux/actions/songsAction'
+//hooks 
+import { useSelectSongHook } from './particularSongHooks/selectSongHook'
+import { useSelectFavoritesHook } from './particularSongHooks/selectFavoritesHook'
 
 const ParticularSong = ({ song }) => {
-    const dispatch = useDispatch()
-    const songs = useSelector(state => state.songsReducer.songs)
-
     const { image, name, author, favorites, id, recentlyAdded, active } = song
 
-    const selectSongHandler = () => {
-        const newCurrentSong = songs.filter(item => item.id === id)
-
-        dispatch(putSongs(id))
-        dispatch(putCurrentSong(newCurrentSong[0]))
-    }
-
-    const favoritesFunction = async (e) => {
-        e.stopPropagation()
-    
-        dispatch(formatFavorites(id))
-        dispatch(updateFieldsAsync(id, favorites))
-    }
+    //ParticularSong-hooks
+    const { selectSongHandler } = useSelectSongHook(id)
+    const { favoritesFunction } = useSelectFavoritesHook(id, favorites)
 
     return(
         <article 

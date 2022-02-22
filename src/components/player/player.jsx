@@ -14,32 +14,33 @@ import { Spinner } from '../spinner/spinner'
 import './_player.scss'
 
 //utils
-import { formatTime } from '../../utils'
+import { formatTime } from '../../utils/formatTime'
 
 //player-logic
-import { LoopLogic } from './playerLogic/loopLogic'
-import { BackgroundLogic } from './playerLogic/backgroundLogic'
-import { TimeDragLogic } from './playerLogic/timeDragLogic'
-import { SkipLogic } from './playerLogic/skipLogic'
-
+import { useLoopLogic } from './playerHooks/loopHook'
+import { useBackgroundLogic } from './playerHooks/backgroundHook'
+import { useTimeDragLogic } from './playerHooks/timeDragHook'
+import { useSkipLogic } from './playerHooks/skipHook'
 
 //react-redux
 import { useSelector, useDispatch } from 'react-redux'
-import { putSongs, putCurrentSong } from '../../redux/actions/songsAction'
-
+import { putNewSongs } from '../../store/reducerSlices/getSongsSlice/getSongsSlice'
 
 const Player = () => {
     const dispatch = useDispatch()
 
-    const songs = useSelector(state => state.songsReducer.songs)
-    const currentSong = useSelector(state => state.songsReducer.currentSong)
-    const libraryIsOpen = useSelector(state => state.libraryIsOpenReducer.libraryIsOpen)
+    //global-state
+    const songs = useSelector(state => state.songs.songs)
+    const currentSong = useSelector(state => state.songs.currentSong)
+    const libraryIsOpen = useSelector(state => state.library.libraryIsOpen)
+    const albumLibraryIsOpen = useSelector(state => state.library.albumLibraryIsOpen)
+    
 
-    //logic-of-that-component
-    const { loop, loopHandler } = LoopLogic()
-    const { backgroundPlate, showPlateHandler, hidePlateHandler } = BackgroundLogic()
-    const { skipForwardSong, skipBackSong, setCurrentIndexOfSong, SKIP_FORWARD_INDEX } = SkipLogic()
-    const { songDataTime, timeUpdateHandler, dragUpdateHandler, audioRef, animationStyleTransform } = TimeDragLogic()
+    //player-hoooks
+    const { loop, loopHandler } = useLoopLogic()
+    const { backgroundPlate, showPlateHandler, hidePlateHandler } = useBackgroundLogic()
+    const { songDataTime, timeUpdateHandler, dragUpdateHandler, audioRef, animationStyleTransform } = useTimeDragLogic()
+    const { skipForwardSong, skipBackSong, setCurrentIndexOfSong, endAudio } = useSkipLogic(loop, audioRef)
 
     const { image, name, audio, id, plate, author } = currentSong
     const { current, duration } = songDataTime
@@ -48,23 +49,16 @@ const Player = () => {
         const indexOfCurrentSong = songs.findIndex(item => item.id === id)
         
         setCurrentIndexOfSong(indexOfCurrentSong)
-        dispatch(putSongs(id))
+        dispatch(putNewSongs(id))
     }, [currentSong, id])
 
 
-    const endAudio = () => {
-        if(loop){
-            audioRef.current.play()
-            return
-        }
-        dispatch(putCurrentSong(songs[SKIP_FORWARD_INDEX]))   
-    }
+    const anumationPlayerBody = `player__body ${libraryIsOpen ? 'player__body--smaller': ''} ${albumLibraryIsOpen ? 'player__body--top' : ''}`
 
     return(
         <section className="player">
             <div className="player__container container">
-                <div className={`player__body ${libraryIsOpen ? 'player--smaller': ''}`}>
-
+                <div className={anumationPlayerBody} >
                     {!Object.values(currentSong).length ? <Spinner /> : 
                         <SongAvatarPlate 
                             image={image} 
@@ -74,10 +68,11 @@ const Player = () => {
                             backgroundPlate={backgroundPlate}
                             plate={plate}
                             author={author}
+                            albumLibraryIsOpen={albumLibraryIsOpen}
                         />
                     }
 
-                    <div className="song__functionality">
+                    <div className={`song__functionality ${albumLibraryIsOpen ? 'song__functionality-active' : ''}`}>
                         <div className="song__skipper">
                             <p className="song__skipper-time song__skipper-start">{formatTime(current || 0)}</p>
                                 <div className="song__track">

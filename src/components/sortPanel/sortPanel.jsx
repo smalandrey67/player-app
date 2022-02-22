@@ -12,12 +12,12 @@ import { ReactComponent as CrossClose } from '../../assets/cross-close.svg'
 
 //test
 import { useDispatch } from 'react-redux'
-import { libraryIsOpenAction } from '../../redux/actions/libraryIsOpenAction'
+import { toggleLibrary } from '../../store/reducerSlices/libraryToggleSlice/libraryToggleSlice'
 
 const SortPanel = ({ panelHandler, sortHandler, sortPanel, searchPanel}) => {
     const dispatch = useDispatch()
 
-    const libraryIsOpenHandler = () => dispatch(libraryIsOpenAction())
+    const libraryIsOpenHandler = () => dispatch(toggleLibrary())
     
     return(
         <>

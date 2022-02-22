@@ -1,25 +1,35 @@
 //styles
 import './_header.scss'
 
+
 //font-awesome 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMusic } from '@fortawesome/free-solid-svg-icons'
 
 
 //redux
-import { useDispatch } from 'react-redux'
-import { libraryIsOpenAction } from '../../redux/actions/libraryIsOpenAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleLibrary, toggleAlbumLibrary } from '../../store/reducerSlices/libraryToggleSlice/libraryToggleSlice'
 
-const Header = ({ setLibraryIsOpen }) => {
-
+const Header = () => {
     const dispatch = useDispatch()
+    const albumLibraryIsOpen = useSelector(state => state.library.albumLibraryIsOpen)
+    const libraryIsOpen = useSelector(state => state.library.libraryIsOpen)
 
     const libraryHandler = () => {
-        dispatch(libraryIsOpenAction())
+        if(albumLibraryIsOpen){
+            dispatch(toggleAlbumLibrary())
+        }
+        dispatch(toggleLibrary())
     }
 
-    // const libraryHandler = () => setLibraryIsOpen(prev => !prev)
-
+    const albumLibraryHandler = () => {
+        if(libraryIsOpen){
+            dispatch(toggleLibrary())
+        }
+        dispatch(toggleAlbumLibrary())
+    }
+    
     return(
         <header className="header">
             <div className="header__container container">
@@ -33,6 +43,7 @@ const Header = ({ setLibraryIsOpen }) => {
                             className="header__button library-button"
                         />
                     </div>
+                    <button onClick={albumLibraryHandler}>albums</button>
                 </div>
             </div>
         </header>

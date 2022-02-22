@@ -1,5 +1,6 @@
 // depencies
 import { useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 //styles
 import './home.scss'
@@ -9,28 +10,29 @@ import { Header } from './components/header/header'
 import { Player } from './components/player/player'
 import { LibrarySongs } from './components/librarySongs/librarySongs'
 import { Footer } from './components/footer/footer'
+import { LibraryAlbums } from './components/libraryAlbums/libraryAlbums'
+
 
 //hoc
 import { CatchError } from './hoc/catchError'
 
-import { songsAsync } from './redux/asyncActions/songsAsync'
+//redux
 import { useDispatch } from 'react-redux'
+import { getSongsSliceAsync } from './store/reducerSlices/getSongsSlice/getSongsSliceAsync'
 
 const Home = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(songsAsync())
-    }, [])
+        dispatch(getSongsSliceAsync())
+    }, [dispatch])
 
     return(
         <CatchError>
             <Header/>
-            <main className="main">
-                <Player />
-                <LibrarySongs />
-            </main>
-            <Footer />
+            <LibrarySongs />
+            <Player />
+            <LibraryAlbums />
         </CatchError> 
     )
 }

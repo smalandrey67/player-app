@@ -8,6 +8,7 @@
     transform: translateX(-100%);
     transition: all 0.8s ease;
     opacity: 0;
+    z-index: 60;
     &--active{
         transform: translateX(0);
         opacity: 1;

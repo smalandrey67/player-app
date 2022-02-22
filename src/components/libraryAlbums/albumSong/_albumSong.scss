@@ -1,0 +1,69 @@
+.particular{
+    padding: 0 10px 0 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    &--active{
+        max-height: 100%;
+        padding: 5px 10px 5px 0;
+    }
+    &:hover{
+        // background-color: var(--color-timber-green);
+        .particular__song-hover{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__song{
+        position: relative;
+        &-image{
+            width: 50px;
+            border-radius: 10px;
+        }
+        &-hover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(155, 155, 155, 0.438);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+    }
+
+
+    &__body{
+        display: flex;
+        align-items: center;
+    }
+
+    &__description{
+        display: flex;
+        flex-direction: column;
+        &-item{
+            margin-left: 10px;
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+        }
+        &--name{
+            font-size: 14px;
+            font-weight: 600;
+        }
+        &--author{
+            color: var(--color-grey);
+            font-size: 12px;
+        }
+    }
+}

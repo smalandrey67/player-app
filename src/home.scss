@@ -20,6 +20,7 @@ input::-ms-reveal,input::-ms-clear {display: none;}
 body{
     font-family: Montserrat;
     height: 100vh;
+    overflow: hidden;
     background: linear-gradient(45deg, var(--color-gable-green), var(--color-te-papa-green), var(--color-san-juan));
     color: var(--color-iron); 
 }

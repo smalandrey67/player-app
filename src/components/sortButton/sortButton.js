@@ -4,20 +4,20 @@ import './_sortButton.scss'
 
 //test
 import { useDispatch } from 'react-redux'
-import { SORT_ALL, SORT_NEW, SORT_FAVORITES } from '../../redux/constans/sortingConstan'
-import {sortAllAction, sortNewAction, sortFavorites,} from '../../redux/actions/sortingAction'
+import { sortAll, sortNew, sortFavorites } from '../../store/reducerSlices/sortSongsSlice/sortSongsSlice'
 
 
 const SortButton = () => {
     const dispatch = useDispatch()
 
     //change-array-of-sort
-    const allSortHandler = () => dispatch(sortAllAction())
-     
-    const newSortHanlder = () => dispatch(sortNewAction())
+
+    const allSortHandler = () => dispatch(sortAll())
+
+    const newSortHanlder = () => dispatch(sortNew())
 
     const favoritesSortHandler = () => dispatch(sortFavorites())
-    
+
 
     return (
         <>

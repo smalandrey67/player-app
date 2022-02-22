@@ -38,9 +38,6 @@
         top: 5px;
         right: 5px;
         transition: all 0.5s ease;
-        &:active{
-            transform: scale(0.8);
-        }
     }
 
     &__new{
@@ -79,10 +76,5 @@
 @media(min-width: 768px){
     .song:hover{
         background-color: var(--color-timber-green);
-    }
-    .song__favorites{
-        &:hover{
-            transform: scale(0.8);
-        }
     }
 }
