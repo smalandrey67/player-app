@@ -5,6 +5,7 @@ import { updateFavoritesAsync } from './updateFavoritesAsync'
 const initialStateGetSogns = {
     songs: [],
     currentSong: {},
+    currentModalDescription: {},
     status: null,
     error: null
 }
@@ -39,7 +40,7 @@ const getSongsSlice = createSlice({
                 return item
             })
             state.songs = newFavoriteSongs
-        }
+        },
     },
     
     extraReducers: {

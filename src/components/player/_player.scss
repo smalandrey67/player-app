@@ -15,7 +15,7 @@
             transform: translateX(40%);
         }
         &--top{
-            transform: translateY(-10%);
+            transform: translateY(-20%);
         }
     }
 
@@ -157,6 +157,10 @@ input[type="range"]::-ms-thumb {
             transform: translateX(0%);
         }
     }
+    .player__body--top{
+        transform: translateY(0%);
+    }
+  
 }
 
 @media(max-width: 430px){
@@ -164,13 +168,10 @@ input[type="range"]::-ms-thumb {
         width: 75%;
     }
     .song__avatar-image__active{
-        width: 45%;
+        width: 30%;
     }
     .song__functionality-active{
         margin-bottom: 10px;
-    }
-    .player__body--top{
-        transform: translateY(-45%);
     }
 }
 

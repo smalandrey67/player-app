@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
+const initialStateLibrary = {
     libraryIsOpen: false,
     albumLibraryIsOpen: false,
+    modalIsOpen: false
 }
 
 const libraryToggleSlice = createSlice({
     name: 'library', 
-    initialState: initialState,
+    initialState: initialStateLibrary,
 
     reducers: {
         toggleLibrary(state){
@@ -15,10 +16,13 @@ const libraryToggleSlice = createSlice({
         },
         toggleAlbumLibrary(state){
             state.albumLibraryIsOpen = !state.albumLibraryIsOpen
+        },
+        toggleModal(state){
+            state.modalIsOpen = !state.modalIsOpen
         }
     }
 })
 
-export const { toggleLibrary, toggleAlbumLibrary } = libraryToggleSlice.actions
+export const { toggleLibrary, toggleAlbumLibrary, toggleModal } = libraryToggleSlice.actions
 
 export default libraryToggleSlice.reducer

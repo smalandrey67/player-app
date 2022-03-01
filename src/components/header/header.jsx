@@ -4,7 +4,7 @@ import './_header.scss'
 
 //font-awesome 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
+import { faMusic, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 
 
 //redux
@@ -35,15 +35,22 @@ const Header = () => {
             <div className="header__container container">
                 <div className="header__body">
                     <h1 className="header__title">chillPop</h1>
-                    <div className="header__functionality" onClick={libraryHandler}>
-                        <p className="header__subtitle">Library</p>
+                    <div className="header__functionality">
+                     
                         <FontAwesomeIcon 
                             icon={faMusic} 
-                            size="lg" 
-                            className="header__button library-button"
+                            size="2x" 
+                            className="header__button library-music"
+                            onClick={libraryHandler}
+                        />
+
+                        <FontAwesomeIcon 
+                            icon={faCompactDisc} 
+                            size="2x" 
+                            className="header__button library-albums"
+                            onClick={albumLibraryHandler}
                         />
                     </div>
-                    <button onClick={albumLibraryHandler}>albums</button>
                 </div>
             </div>
         </header>

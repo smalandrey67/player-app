@@ -4,12 +4,13 @@ import libraryToggleReducer from './reducerSlices/libraryToggleSlice/libraryTogg
 import sortSongsReducer from './reducerSlices/sortSongsSlice/sortSongsSlice'
 import singersAlbumReducer from './reducerSlices/singersAlbumSlice/singersAlbumSlice'
 
+
 export default configureStore({
     reducer: {
         songs: getSongsSliceReducer,
         library: libraryToggleReducer,
         sortingSongs: sortSongsReducer,
-        albums: singersAlbumReducer, 
+        albums: singersAlbumReducer,
     }
 })
 

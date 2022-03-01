@@ -1,30 +1,17 @@
 import './_albumSong.scss'
+import { useState } from 'react'
 
-import { useDispatch } from 'react-redux'
-import { putNewCurrentSong } from '../../../store/reducerSlices/getSongsSlice/getSongsSlice'
-
+//font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faPlay } from '@fortawesome/free-solid-svg-icons'
 
+//hooks
+import { useSongFunctionality } from './albumSongHook/songFunctionality'
 
-import { updateFavoritesAsync } from '../../../store/reducerSlices/getSongsSlice/updateFavoritesAsync'
-import { updateAlbumSongs } from '../../../store/reducerSlices/singersAlbumSlice/singersAlbumSlice'
 
 
 export const AlbumSong = ({ song, item }) => {
-    const dispatch = useDispatch()
-    const { image, name, author, favorites, id } = song
-
-    const favoritesunction = (e) => {
-        e.stopPropagation()
-        
-        dispatch(updateAlbumSongs({id}))
-        dispatch(updateFavoritesAsync({id, favorites}))
-    }
-
-    const selectNewSongHandler = () => {
-        dispatch(putNewCurrentSong(song))
-    }
+    const { favoritesunction, selectNewSongHandler, name, image, author, favorites  } = useSongFunctionality(song)
 
     return( 
         <div onClick={selectNewSongHandler} className={`particular ${item.activeAlbum ? 'particular--active' : ''}`}>

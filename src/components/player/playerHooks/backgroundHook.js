@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+
  
 const useBackgroundLogic = () => {
     const [backgroundPlate, setBackgroundPlate] = useState(false)

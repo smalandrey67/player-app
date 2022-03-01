@@ -33,6 +33,7 @@ const Home = () => {
             <LibrarySongs />
             <Player />
             <LibraryAlbums />
+            {/* <Footer />  */}
         </CatchError> 
     )
 }

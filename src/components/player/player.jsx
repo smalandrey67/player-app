@@ -72,9 +72,9 @@ const Player = () => {
                         />
                     }
 
-                    <div className={`song__functionality ${albumLibraryIsOpen ? 'song__functionality-active' : ''}`}>
+                    <div className="song__functionality">
                         <div className="song__skipper">
-                            <p className="song__skipper-time song__skipper-start">{formatTime(current || 0)}</p>
+                            <p style={{paddingRight: albumLibraryIsOpen ? 7 : 0}} className="song__skipper-time song__skipper-start">{formatTime(current || 0)}</p>
                                 <div className="song__track">
                                     <input 
                                         min={0} 
@@ -87,7 +87,7 @@ const Player = () => {
                                     />
                                     <div style={animationStyleTransform} className="song__track-animate"></div>
                                 </div>
-                            <p className="song__skipper-time song__skipper-finish">{formatTime(duration || 0)}</p>
+                            <p style={{paddingLeft: albumLibraryIsOpen ? 7 : 0}} className="song__skipper-time song__skipper-finish">{formatTime(duration || 0)}</p>
                         </div>
                         <FontAwesomeIcon 
                             className="song__infinity-icon infinity-icon"

@@ -4,6 +4,7 @@
         "authorImage": "https://i.scdn.co/image/0abd05f1357954a3d061a878b8fc420279675921",
         "activeAlbum": false,
         "idAlbum": "hanz/1",
+        "description": "We've heard plenty from Hanz in recent months – loose singles and tracks as 1/2 of duo Sworn – but not since 2019 have we heard a solo EP from the forward-thinking producer. Downtempo and bass-driven, his newest offering is the electrified five track On the Other Side. It's lost in a midnight dreamscape, twilight ride, taking the open road with no end point in mind. Press play and drive.",
         "songs": [
             {
                 "active": false,
@@ -46,112 +47,7 @@
         "authorImage": "https://i.scdn.co/image/90e07b1d6cf2b526ad23190e6a6eec36f2898854",
         "activeAlbum": false,
         "idAlbum": "delayde/2",
-        "songs": [
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23188",
-                "author": "Delayde",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Where The Sun Goes",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "EBd2D8uOw5JanfSwk6TO"
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23196",
-                "author": "Delayde",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Southwesterly",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "NRwNvX6XDgO9iSo6GtxR"
-              
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23195",
-                "author": "Delaybe",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Blue",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "zhBskhor9kkkqJrd9nrD"
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23194",
-                "author": "Delaybe",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Time Went By",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "uubadLdh4ESmoiHBLJ6W"
-            }
-        ]
-    },
-    {
-        "author": "Delayde",
-        "authorImage": "https://i.scdn.co/image/90e07b1d6cf2b526ad23190e6a6eec36f2898854",
-        "activeAlbum": false,
-        "idAlbum": "delayde/2",
-        "songs": [
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23188",
-                "author": "Delayde",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Where The Sun Goes",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "EBd2D8uOw5JanfSwk6TO"
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23196",
-                "author": "Delayde",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Southwesterly",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "NRwNvX6XDgO9iSo6GtxR"
-              
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23195",
-                "author": "Delaybe",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Blue",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "zhBskhor9kkkqJrd9nrD"
-            },
-            {
-                "active": false,
-                "audio": "https://mp3.chillhop.com/serve.php/?mp3=23194",
-                "author": "Delaybe",
-                "favorites": false,
-                "image": "https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg",
-                "name": "Time Went By",
-                "plate": "https://cdn1.savepice.ru/uploads/2022/2/8/3c049512e2217ec7d5148c0363b56fb5-full.jpg",
-                "recentlyAdded": false,
-                "id": "uubadLdh4ESmoiHBLJ6W"
-            }
-        ]
-    },
-    {
-        "author": "Delayde",
-        "authorImage": "https://i.scdn.co/image/90e07b1d6cf2b526ad23190e6a6eec36f2898854",
-        "activeAlbum": false,
-        "idAlbum": "delayde/2",
+        "description": "Last summer, producer Delayde released the three song EP Little Spirit. Now, one year later, he returns with musician anybodyy for the nine song LP Inside a Saltwater Room. Complete with dreamy and cohesive animation from Zutto, the collaborative project feels worlds away. Deep in the ocean or lost in space. Perfect for daydreaming, drifting, floating off to somewhere new.",
         "songs": [
             {
                 "active": false,

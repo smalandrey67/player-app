@@ -13,7 +13,7 @@ const SongAvatarPlate = ({
         <figure className="song__figure">
             <div className="song__avatar">
                 <img 
-                    className={`song__avatar-image ${albumLibraryIsOpen ? 'song__avatar-image__active' : ''}`}
+                    className="song__avatar-image"
                     src={image} 
                     alt={name} 
                     onMouseEnter={showPlateHandler} 

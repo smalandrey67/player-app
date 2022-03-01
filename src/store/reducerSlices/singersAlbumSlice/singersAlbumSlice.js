@@ -3,7 +3,8 @@ import data from '../../../localData/data.json'
 
 
 const initialStateAlbums = {
-    albums: data
+    albums: data,
+    currentModalDescription: {}
 }
 
 
@@ -30,11 +31,14 @@ const singersAlbumSlice = createSlice({
                 })
                 return item
             })  
-        }
+        }, 
+        putCerrentDescription(state, action){
+            state.currentModalDescription = state.albums.find(item => item.idAlbum === action.payload.id)
+        },
     }
 })
 
 
-export const { activeAlbum, updateAlbumSongs } = singersAlbumSlice.actions
+export const { activeAlbum, updateAlbumSongs, putCerrentDescription } = singersAlbumSlice.actions
 
 export default singersAlbumSlice.reducer

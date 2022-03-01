@@ -8,7 +8,7 @@ export const useSearchPanelHook = () => {
     useEffect(() => {
         
         if(searchPanel) searchPanelRef.current.focus()
-        else searchPanelRef?.current?.blur()
+        else searchPanelRef.current.blur()
 
     }, [searchPanel, searchPanelRef])
 
