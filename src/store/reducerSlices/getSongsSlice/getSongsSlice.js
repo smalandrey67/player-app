@@ -6,6 +6,7 @@ const initialStateGetSogns = {
     songs: [],
     currentSong: {},
     currentModalDescription: {},
+    isPlay: false, 
     status: null,
     error: null
 }
@@ -41,6 +42,9 @@ const getSongsSlice = createSlice({
             })
             state.songs = newFavoriteSongs
         },
+        playUpdate(state){
+            state.isPlay = !state.isPlay
+        }
     },
     
     extraReducers: {
@@ -60,6 +64,6 @@ const getSongsSlice = createSlice({
     }
 })
 
-export const { putNewCurrentSong, putNewSongs, updateSongs } = getSongsSlice.actions
+export const { putNewCurrentSong, putNewSongs, updateSongs, playUpdate } = getSongsSlice.actions
 
 export default getSongsSlice.reducer

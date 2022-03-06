@@ -1,11 +1,14 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { putNewCurrentSong } from '../../../../store/reducerSlices/getSongsSlice/getSongsSlice'
 
 import { updateFavoritesAsync } from '../../../../store/reducerSlices/getSongsSlice/updateFavoritesAsync'
 import { updateAlbumSongs } from '../../../../store/reducerSlices/singersAlbumSlice/singersAlbumSlice'
+import { playUpdate } from '../../../../store/reducerSlices/getSongsSlice/getSongsSlice'
+import { activeSong } from '../../../../store/reducerSlices/singersAlbumSlice/singersAlbumSlice'
 
 
 export const useSongFunctionality = (song) => {
+    const isPlay = useSelector(state => state.songs.isPlay)
     const dispatch = useDispatch()
 
     const { image, name, author, favorites, id} = song
@@ -18,7 +21,11 @@ export const useSongFunctionality = (song) => {
     }
 
     const selectNewSongHandler = () => {
+        dispatch(activeSong({id}))
         dispatch(putNewCurrentSong(song))
+
+        if(isPlay) return
+        dispatch(playUpdate())
     }
 
     return {

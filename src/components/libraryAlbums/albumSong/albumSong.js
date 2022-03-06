@@ -1,14 +1,11 @@
 import './_albumSong.scss'
-import { useState } from 'react'
 
 //font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 //hooks
 import { useSongFunctionality } from './albumSongHook/songFunctionality'
-
-
 
 export const AlbumSong = ({ song, item }) => {
     const { favoritesunction, selectNewSongHandler, name, image, author, favorites  } = useSongFunctionality(song)
@@ -20,7 +17,7 @@ export const AlbumSong = ({ song, item }) => {
                     <img className="particular__song-image" src={image} alt={name} />
                     <div className="particular__song-hover">
                         <FontAwesomeIcon
-                            icon={faPlay} 
+                            icon={song.active ? faPause : faPlay} 
                             className="particular__song-play"
                         />
                     </div>

@@ -12,7 +12,6 @@
         padding: 5px 10px 5px 0;
     }
     &:hover{
-        // background-color: var(--color-timber-green);
         .particular__song-hover{
             opacity: 1;
             visibility: visible;
@@ -66,4 +65,14 @@
             font-size: 12px;
         }
     }
+}
+
+
+@media(max-width: 768px){
+    // .particular:hover{
+        .particular__song-hover{
+            opacity: 1;
+            visibility: visible;
+        }
+    // }
 }

@@ -6,7 +6,6 @@ const SongAvatarPlate = ({
     backgroundPlate, 
     plate, 
     author,
-    albumLibraryIsOpen
 }) => {
 
     return(

@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 
 const useTimeDragLogic = () => {
     const [songDataTime, setSongDataTime] = useState(
-        {current: 0, duration: 0, animationTime: 0}
+        {current: 0, duration: 0}
     )
 
     const audioRef = useRef()
@@ -10,11 +10,8 @@ const useTimeDragLogic = () => {
     const timeUpdateHandler = (e) => {
         const { currentTime, duration } = e.target
 
-        //animation-range-update
-        const animationTime = Math.round((Math.round(currentTime) / Math.round(duration)) * 100)
-
         setSongDataTime(
-            {...songDataTime, current: currentTime, duration, animationTime, }
+            {...songDataTime, current: currentTime, duration,}
         )
     }
 
@@ -26,16 +23,12 @@ const useTimeDragLogic = () => {
         )
     }
 
-    const animationStyleTransform = {
-        transform: `translateX(${songDataTime.animationTime}%)`
-    }
-    
+ 
     return {
         songDataTime,
         timeUpdateHandler,
         dragUpdateHandler,
         audioRef,
-        animationStyleTransform,
     }
 }
 

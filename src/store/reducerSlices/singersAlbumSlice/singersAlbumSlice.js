@@ -22,6 +22,18 @@ const singersAlbumSlice = createSlice({
                 return {...item, activeAlbum: false}
             })
         },
+        activeSong(state, action){
+            state.albums = state.albums.map(item => {
+                item.songs.forEach(song => {
+                    if(song.id === action.payload.id){
+                        song.active = true
+                    }else{
+                        song.active = false 
+                    }
+                })
+                return item
+            })
+        },
         updateAlbumSongs(state, action){
             state.albums = state.albums.map(item => {
                 item.songs.forEach(song => {
@@ -39,6 +51,6 @@ const singersAlbumSlice = createSlice({
 })
 
 
-export const { activeAlbum, updateAlbumSongs, putCerrentDescription } = singersAlbumSlice.actions
+export const { activeAlbum, updateAlbumSongs, putCerrentDescription, activeSong } = singersAlbumSlice.actions
 
 export default singersAlbumSlice.reducer

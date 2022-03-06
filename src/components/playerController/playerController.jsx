@@ -1,19 +1,23 @@
 // depencies
-import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 //font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons'
 
+import { playUpdate } from '../../store/reducerSlices/getSongsSlice/getSongsSlice'
+
 
 const PlayerController = ({ currentSong, audioRef, skipBackSong, skipForwardSong }) => {
-    const [isPlay, setIsPlay] = useState(false)
+    const dispatch = useDispatch()
+    const isPlay = useSelector(state => state.songs.isPlay)
 
     useEffect(() => {
         isPlay ? audioRef.current.play() : audioRef.current.pause()
     }, [isPlay, audioRef, currentSong])
 
-    const playHandler = () => setIsPlay(prevStatusPlay => !prevStatusPlay)
+    const playHandler = () => dispatch(playUpdate())
     
     return(
         <div className="player__controller">

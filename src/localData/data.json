@@ -95,5 +95,70 @@
                 "id": "uubadLdh4ESmoiHBLJ6W"
             }
         ]
+    },
+    {
+        "author": "SwuM",
+        "authorImage": "https://i.scdn.co/image/ff7b013d81b2eaa4e537f6940c8190800ddd217f",
+        "activeAlbum": false,
+        "idAlbum": "SwuM/2",
+        "description": "In the past three years, prolific producer SwuM has released three projects with us: 2019’s Orbit, 2020’s Aries, and now 2021’s Cycles. The third part of the laid-back instrumental trilogy remains in outer space, floating with hope. Eight lofi tracks that welcome the cosmos and provide the bounce.",
+        "songs": [
+            {
+                "active": false,
+                "audio": "https://mp3.chillhop.com/serve.php/?mp3=15224",
+                "author": "SwuM",
+                "favorites": false,
+                "image": "https://chillhop.com/wp-content/uploads/2021/03/74d62bc9370a68e440c1b98eaf650344f0a7faea-1024x1024.jpg",
+                "name": "By Chance",
+                "plate": "https://ltdfoto.ru/images/2022/03/06/plate-main.png",
+                "recentlyAdded": true,
+                "id": "9uKxaPhTzuj6321BM5Oo"
+            },
+            {
+                "active": false,
+                "audio": "https://mp3.chillhop.com/serve.php/?mp3=15226",
+                "author": "SwuM",
+                "favorites": false,
+                "image": "https://chillhop.com/wp-content/uploads/2021/03/74d62bc9370a68e440c1b98eaf650344f0a7faea-1024x1024.jpg",
+                "name": "Skates",
+                "plate": "https://ltdfoto.ru/images/2022/03/06/plate-main.png",
+                "recentlyAdded": false,
+                "id": "7DP4tBJrpiMPqQURs2Qs"
+              
+            },
+            {
+                "active": false,
+                "audio": "https://mp3.chillhop.com/serve.php/?mp3=15236",
+                "author": "SwuM",
+                "favorites": false,
+                "image": "https://chillhop.com/wp-content/uploads/2021/03/74d62bc9370a68e440c1b98eaf650344f0a7faea-1024x1024.jpg",
+                "name": "Samething",
+                "plate": "https://ltdfoto.ru/images/2022/03/06/plate-main.png",
+                "recentlyAdded": false,
+                "id": "9TvirKzZxQfhBDHiII8O"
+            },
+            {
+                "active": false,
+                "audio": "https://mp3.chillhop.com/serve.php/?mp3=15237",
+                "author": "SwuM",
+                "favorites": false,
+                "image": "https://chillhop.com/wp-content/uploads/2021/03/74d62bc9370a68e440c1b98eaf650344f0a7faea-1024x1024.jpg",
+                "name": "On the Moon",
+                "plate": "https://ltdfoto.ru/images/2022/03/06/plate-main.png",
+                "recentlyAdded": false,
+                "id": "OskvskamDnkpBM2vjiqG"
+            },
+            {
+                "active": false,
+                "audio": "https://mp3.chillhop.com/serve.php/?mp3=15228",
+                "author": "SwuM",
+                "favorites": false,
+                "image": "https://chillhop.com/wp-content/uploads/2021/03/74d62bc9370a68e440c1b98eaf650344f0a7faea-1024x1024.jpg",
+                "name": "Mario Kart",
+                "plate": "https://ltdfoto.ru/images/2022/03/06/plate-main.png",
+                "recentlyAdded": false,
+                "id": "kWf6nhVINeAoM5XtnFiV"
+            }
+        ]
     }
 ]
