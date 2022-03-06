@@ -3,21 +3,18 @@ import { getFirestore } from 'firebase/firestore'
 import { collection } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD5ZUgGEsuJEvcZQ1dVA9Xa-8K_V5svDMM",
-  authDomain: "player-app-fdf1e.firebaseapp.com",
-  projectId: "player-app-fdf1e",
-  storageBucket: "player-app-fdf1e.appspot.com",
-  messagingSenderId: "834709978552",
-  appId: "1:834709978552:web:0b44434298118e5d40a34d"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 const userCollectionRef = collection(db, 'songs')
-
-
-
 
 export { userCollectionRef, db }
 
